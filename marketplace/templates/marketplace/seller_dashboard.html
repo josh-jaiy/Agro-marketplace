@@ -1,0 +1,24 @@
+<!-- templates/marketplace/seller_dashboard.html -->
+{% extends 'marketplace/base.html' %}
+
+{% block title %}Seller Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Seller Dashboard</h1>
+<!-- Seller-specific content goes here -->
+{% endblock %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seller Dashboard</title>
+</head>
+<body>
+    <h1>Seller Dashboard</h1>
+    <p>Welcome, {{ request.user.username }}! This is the seller dashboard.</p>
+    <a href="{% url 'seller_profile' %}">Update Profile</a>
+    <a href="{% url 'product_list' %}">View Products</a>
+</body>
+</html>

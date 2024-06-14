@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Detail</title>
+</head>
+<body>
+    <h1>Transaction Detail</h1>
+    <p>Product: {{ transaction.product.name }}</p>
+    <p>Buyer: {{ transaction.buyer.user.username }}</p>
+    <p>Quantity: {{ transaction.quantity }}</p>
+    <p>Total Price: {{ transaction.total_price }}$</p>
+    <p>Date: {{ transaction.date }}</p>
+</body>
+</html>

@@ -1,0 +1,266 @@
+
+REGISTERFORM
+<h1>Register</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% for field in form %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Agro Marketplace{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Custom Styles */
+        .navbar-custom {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .hero-section {
+            background: url('{% static 'images/your-background-image.jpg' %}') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'dashboard' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="AgroConnect">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'seller_profile' %}">Seller Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'buyer_profile' %}">Buyer Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Grow Together</h1>
+                <p>Unleash the Power of Agro Marketplace to Connect Buyers and Sellers in a Thriving Ecosystem.</p>
+                <a href="{% url 'get_started' %}" class="btn btn-primary">Get Started</a>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <img src="{% static 'images/image1.png' %}" alt="Image 1">
+            <img src="{% static 'images/image2.png' %}" alt="Image 2">
+            <img src="{% static 'images/image3.png' %}" alt="Image 3">
+            <img src="{% static 'images/image4.png' %}" alt="Image 4">
+            <img src="{% static 'images/image5.png' %}" alt="Image 5">
+            <img src="{% static 'images/image6.jpg' %}" alt="Image 6">
+            <img src="{% static 'images/image7.jpg' %}" alt="Image 7">
+        </section>
+
+        <div class="container my-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="bg-light py-3">
+        <div class="container">
+            <p>&copy; Agro Marketplace</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+#my main base //code.jquery.com/jquery
+
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Agro Marketplace{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Custom Styles */
+        .navbar-custom {                                                                
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .hero-section {
+            background-size: cover;
+            color: blue;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero-section img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            opacity:10
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'dashboard' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="AgroConnect">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'seller_profile' %}">Seller Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'buyer_profile' %}">Buyer Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Grow By Nigerians,</h1>
+            <img src="{% static 'images/image4.png' %}" alt="">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'dashboard' %}">
+                
+                <p>Unleash the Power of Agro Marketplace to Connect Buyers and Sellers in a Thriving Ecosystem.</p>
+                <a href="{% url 'get_started' %}" class="btn btn-primary">Get Started</a>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <img src="{% static 'images/image1.png' %}" alt="Image 1">
+            <img src="{% static 'images/image2.png' %}" alt="Image 2">
+            <img src="{% static 'images/image1.png' %}" alt="Image 1">
+            <img src="{% static 'images/image4.png' %}" alt="Image 4">
+            <img src="{% static 'images/image5.png' %}" alt="Image 5">
+            <img src="{% static 'images/image6.png' %}" alt="Image 6">
+            <img src="{% static 'images/image4.png' %}" alt="Image 7">
+        </section>
+
+        <div class="container my-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="bg-light py-3">
+        <div class="container">
+            <p>&copy; Agro Marketplace</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

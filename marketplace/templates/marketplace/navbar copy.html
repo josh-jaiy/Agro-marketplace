@@ -1,0 +1,70 @@
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Zuma Water </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+
+          <!--<a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>-->
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}
+         <!-- <a class="nav-link" href="/list_items">List_items</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add_items">ADD_RAW_MATERIAL</a>
+        </li>-->
+          {% endif %}
+      </ul>
+        {% if request.user.is_authenticated %}
+            <li><a href="/accounts/logout"><button class="btn btn-danger">{{ user }} | Logout</button></a></li>
+            {% else %}
+            <li><a href="/accounts/login"><button class="btn btn-primary"> Login</button></a></li>
+            {% endif %}
+          </ul>
+      </ul>
+    </div>
+
+
+
+  </div>
+
+
+</nav>
+{% if request.user.is_authenticated %}
+    <a href="#"><div id="version-display" data-toggle="modal" data-target="#myModal">SMIS Ver: 1.0</div></a>
+      <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+              <!-- Modal content-->
+                <div class="modal-content">
+                  
+                    <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        <h4 class="modal-title">System Information</h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="dev-info">
+                          <p class=""><b>STOCK MANAGEMENT INFORMATION SYSTEMS</b></p>
+                          <p>VERSION: 1.O</p><br>
+
+                          <p class="modal-header">DEVELOPER:</p>
+                          <p>Arbcoms</p>
+                          <p>4444444</p>
+                          <p><img src="/static/img/logo.png" alt="Developer Logo"></p>             
+                        </div>
+                    </div>
+                 
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    {% endif %}
+                </div>
+          </div>
+      </div>
+
+
